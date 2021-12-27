@@ -12,7 +12,7 @@ From this section anyone can select his/her started date of journry and ending d
 From this section, we can select the number of guests.
 You will not able to select negative number of guest.
 And the maximum number of guest is 5.
-0<=guest<=5
+Condition: 0<=guest<=5
 
 ## Price:
 Visitor can select his/her price range from this section.
