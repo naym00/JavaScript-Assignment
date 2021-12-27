@@ -1,0 +1,820 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+
+    <!-- date picker start -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hotel-datepicker@4.0.2/dist/css/hotel-datepicker.css" />
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/fecha@4.2.1/lib/fecha.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hotel-datepicker@4.0.2/dist/js/hotel-datepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"
+        integrity="sha512-nnzkI2u2Dy6HMnzMIkh7CPd1KX445z38XIu4jG1jGw7x5tSL3VBjE44dY4ihMU1ijAQV930SPM12cCFrB18sVw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <!-- date picker end -->
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="css/style.css">
+    <title>rent by owner</title>
+</head>
+
+<!-- navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark navbar_background">
+    <div class="container-fluid">
+
+        <!-- navbar image portion which is in left side -->
+        <div>
+            <img src="images/header_logo.svg">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+
+        <!-- navbar drag-down buttons which is in right side -->
+        <ul class="nav nav-pills">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Rentals
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Nearby
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Destinations
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Find a Vacation Rental"
+                            aria-label="Search">
+                        <button class="btn btn-outline-secondary" type="submit">Search</button>
+                    </form>
+                </ul>
+            </div>
+        </ul>
+    </div>
+</nav>
+
+<!-- body portion -->
+<div class="container">
+
+    <!-- cover portion -->
+    <div class="row mt-2">
+        <div class="text-center">
+            <!-- cover image -->
+            <img src="images/cover.jpg" class="img-fluid rounded mx-auto d-block" alt="Random Image">
+
+            <div class="card-img-overlay card-body margin_for_cover text-dark">
+                <b>
+                    <p class="card-title">JOURNEYS</p>
+                </b>
+                <h3 class="card-text">Stories From Around The World</h3>
+
+                <!-- search portion -->
+                <div class="container" style="margin: auto;">
+
+                    <!-- row start -->
+                    <div class="row">
+
+                        <!-- column-1 -->
+                        <!-- Search Start -->
+                        <div class="col-4 rounded">
+                            <div class="form-group has-icon">
+                                <span class="fa fa-map-marker-alt form-control-feedback"
+                                    style="font-size: 20px;"></span>
+                                <input type="text" id="input" class="form-control" oninput="lengthCheck()"
+                                    placeholder="Search for location" />
+                            </div>
+                            <ul class="list"></ul>
+                        </div>
+                        <!-- Search End -->
+
+
+                        <!-- column-2 -->
+                        <!-- Date Picker Start -->
+                        <div class="col-3 rounded">
+                            <input type="text" class="form-control text-center rounded" id="date-id"
+                                placeholder="Check In > Check Out" />
+                            <!-- hotel date picker javascript code -->
+                            <script>
+                                var hdpkr = new HotelDatepicker(document.getElementById("date-id"));
+                            </script>
+                        </div>
+                        <!-- Date Picker End -->
+
+
+                        <!-- column-3 -->
+                        <!-- Guest Start -->
+                        <div class="col-2 rounded">
+                            <button id="guest_number" style="width: 100%;" type="button"
+                                class="btn btn-light dropdown-toggle" aria-expanded="false" role="button"
+                                data-bs-toggle="modal" data-bs-target="#guestsModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                                    <path fill-rule="evenodd"
+                                        d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
+                                </svg>
+                                Guest
+                            </button>
+                        </div>
+                        <div class="modal fade" id="guestsModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header ">
+                                        <h5 class="modal-title" id="exampleModalLabel"><span>Guests: </span></h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div
+                                            class="parent container d-flex justify-content-center align-items-center h-100">
+                                            <div class="child">
+                                                <button class="btn btn-minus" onclick="decrement()">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                                                        fill="currentColor" class="bi bi-dash-circle-fill"
+                                                        viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7z" />
+                                                    </svg>
+                                                </button>
+                                                <span id="updateGuestInfo">0</span>
+                                                <button class="btn btn-minus" onclick="increment()">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                                                        fill="currentColor" class="bi bi-plus-circle-fill"
+                                                        viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-primary" type="button" data-bs-dismiss="modal"
+                                            onclick="show_guest_number()">Apply</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Guest End -->
+
+
+                        <!-- column-4 -->
+                        <!-- Price Start -->
+                        <div class="col-2 rounded">
+                            <div class="dropdown">
+                                <button style="width: 100%;" class="btn btn-light dropdown-toggle" type="button"
+                                    id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Price
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                                    <li>
+                                        <div class="wrapper">
+                                            <div class="values">
+                                                <span id="range1">
+                                                    0
+                                                </span>
+                                                <span> &dash; </span>
+                                                <span id="range2">
+                                                    100
+                                                </span>
+                                            </div>
+                                            <div class="price-container">
+                                                <div class="slider-track"></div>
+                                                <input type="range" min="0" max="1000" value="100" id="slider-1"
+                                                    oninput="slideOne()">
+                                                <input type="range" min="0" max="1000" value="900" id="slider-2"
+                                                    oninput="slideTwo()">
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" data-bs-dismiss="modal"
+                                                    class="btn btn-primary mt-5"
+                                                    onclick="show_price_range()">Apply</button>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Price End -->
+
+                        <!-- column-5 -->
+                        <!-- Search Start -->
+                        <div class="col-1 rounded">
+                            <button type="button " class="btn btn-primary" style="width: 100%;" data-bs-toggle="modal"
+                                data-bs-target="#finalModal" onclick="insertedValues()">
+                                Search
+                            </button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="finalModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">
+                                                Search Result
+                                            </h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <p>Search: <span id="placeSearchValue"></span></p>
+                                            <p>Check In: <span id="checkInValue"></span></p>
+                                            <p>Check Out: <span id="checkOutValue"></span></p>
+                                            <p>Guests: <span id="guestsValue"></span></p>
+                                            <p>Price Range: <span id="priceRangeValue"></span></p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                Close
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Search End -->
+                    </div>
+                    <!-- row End -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row my-5">
+        <div class="col-sm-3 col-lg-3">
+            <div class="row">
+                <p>The Best Beach Towns in Florida You Need To Visit</p>
+            </div>
+            <div class="row">
+                <div class="col-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-person-fill" viewBox="0 0 16 16">
+                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                    </svg>
+                </div>
+                <div class="col-11">
+                    <p><small class="fw-lighter">STAFF WRITER</small></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-3 col-lg-3">
+            <div class="row">
+                <p>The Best Sarasota Area Beaches To Explore</p>
+            </div>
+            <div class="row">
+                <div class="col-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-person-fill" viewBox="0 0 16 16">
+                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                    </svg>
+                </div>
+                <div class="col-11">
+                    <p><small class="fw-lighter">STAFF WRITER</small></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-3 col-lg-3">
+            <div class="row">
+                <p>South Sarasota Things to Do On Your Vacation</p>
+            </div>
+            <div class="row">
+                <div class="col-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-person-fill" viewBox="0 0 16 16">
+                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                    </svg>
+                </div>
+                <div class="col-11">
+                    <p><small class="fw-lighter">STAFF WRITER</small></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-3 col-lg-3">
+            <div class="row">
+                <p>South Padre Island Things to Do On Your Vacation</p>
+            </div>
+            <div class="row">
+                <div class="col-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-person-fill" viewBox="0 0 16 16">
+                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                    </svg>
+                </div>
+                <div class="col-11">
+                    <p><small class="fw-lighter">STAFF WRITER</small></p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-sm-3 col-lg-3 mx-lg-2 rounded">
+            <img src="images/111.jpg" class="img-fluid rounded mx-auto d-block" alt="Random Image"
+                style="height: 200px;">
+        </div>
+
+        <div class="col-sm-3 col-lg-5 mx-lg-2 rounded">
+            <img src="images/222.jpg" class="img-fluid rounded mx-auto d-block" alt="Random Image"
+                style="height: 200px;">
+        </div>
+
+        <div class="col-sm-3 col-lg-3 mx-lg-2 navbar_background rounded">
+            <div class="row">
+                <h1 style="color: #04cc9c;">The Night Life and the Food.</h1>
+            </div>
+            <div class="row mt-5">
+                <button class="btn btn-lin navbar_background" style="width: 135px; color: #04cc9c;"
+                    type="button">Explore Liberia</button>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-9">
+            <div class="row my-5">
+                <div class="col-md-4 navbar_background rounded">
+                    <img class="text-center margin_middle" src="images/header_logo.svg">
+                </div>
+
+                <div class="col-md-8">
+                    <div>
+                        <div class="card-body">
+                            <h1 class="card-title" style="color: #043474;">The Best Beach Towns in Florida You Need
+                                To
+                                Visit.</h1>
+                            <p class="card-text"><small class="text-muted">Written By <a href="">Staff Writter</a>
+                                </small></p>
+                            <p class="card-text">Let's start with the big picture. Planning a trip to Florida? Here
+                                are
+                                the best beaches where you should spend the week (or the month) on the beach with
+                                you....</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 pt-lg-4">
+                    <img src="images/beach.jpg" class="img-fluid rounded mx-auto d-block" alt="Random Image"
+                        style="height: auto;">
+                </div>
+
+                <div class="col-md-8">
+                    <div>
+                        <div class="card-body">
+                            <h1 class="card-title" style="color: #043474;">The Best Sarasota Area Beaches To
+                                Explore.
+                            </h1>
+                            <p class="card-text"><small class="text-muted">Written By <a href="">Staff Writter</a>
+                                </small></p>
+                            <p class="card-text">Sarasota Country has some of the best beaches in all of Florida and
+                                the
+                                Gult of Mexico. So wheather you're looking for a more chilled-out while sand beach
+                                to
+                                do....</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">.....</a></li>
+                        <li class="page-item"><a class="page-link" href="#">38</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Last</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="row navbar_background my-5">
+                <h1>
+                    <p style="color: #04cc9c;">“Tybee is replete with everything that you need to have the perfect
+                        vacation.”</p>
+                </h1>
+                <div class="row">
+
+                    <div class="col-11 text-light">Find Perfection on Tybee Island</div>
+                    <div class="col-1 text-light right"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
+                        </svg></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="row">
+                <p class="left mt-5">CATEGORIES</p>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-light" style="color: #04cc9c;" type="button">Alabama</button>
+                </div>
+                <div class="col right">
+                    <svg style="color: #04cc9c;" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                        <path
+                            d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-light rounded" style="color: #04cc9c;" type="button">Arizona</button>
+                </div>
+                <div class="col right">
+                    <svg style="color: #04cc9c;" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                        <path
+                            d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="row">
+                <button class="btn btn-light left" style="color: #04cc9c;" type="button">Beaches</button>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-light" style="color: #04cc9c;" type="button">California</button>
+                </div>
+                <div class="col right">
+                    <svg style="color: #04cc9c;" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                        <path
+                            d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-light" style="color: #04cc9c;" type="button">Florida</button>
+                </div>
+                <div class="col right">
+                    <svg style="color: #04cc9c;" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                        <path
+                            d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-light" style="color: #04cc9c;" type="button">Georgia</button>
+                </div>
+                <div class="col right">
+                    <svg style="color: #04cc9c;" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                        <path
+                            d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-light" style="color: #04cc9c;" type="button">Hawaii</button>
+                </div>
+                <div class="col right">
+                    <svg style="color: #04cc9c;" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                        <path
+                            d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="row">
+                <button class="btn btn-light left" style="color: #04cc9c;" type="button">Hiking</button>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-light" style="color: #04cc9c;" type="button">Maine</button>
+                </div>
+                <div class="col right">
+                    <svg style="color: #04cc9c;" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                        <path
+                            d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-light" style="color: #04cc9c;" type="button">Maryland</button>
+                </div>
+                <div class="col right">
+                    <svg style="color: #04cc9c;" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                        <path
+                            d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-light" style="color: #04cc9c;" type="button">Massachusetts</button>
+                </div>
+                <div class="col right">
+                    <svg style="color: #04cc9c;" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                        <path
+                            d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="row">
+                <button class="btn btn-light left" style="color: #04cc9c;" type="button">Museums</button>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-light" style="color: #04cc9c;" type="button">Oregon</button>
+                </div>
+                <div class="col right">
+                    <svg style="color: #04cc9c;" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                        <path
+                            d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="row">
+                <button class="btn btn-light left" style="color: #04cc9c;" type="button">Parks</button>
+            </div>
+
+            <div class="row">
+                <button class="btn btn-light left" style="color: #04cc9c;" type="button">Place To Stay</button>
+            </div>
+
+            <div class="row">
+                <button class="btn btn-light left" style="color: #04cc9c;" type="button">Restaurants</button>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-light" style="color: #04cc9c;" type="button">South Carolina</button>
+                </div>
+                <div class="col right">
+                    <svg style="color: #04cc9c;" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                        <path
+                            d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-light" style="color: #04cc9c;" type="button">Tennessee</button>
+                </div>
+                <div class="col right">
+                    <svg style="color: #04cc9c;" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                        <path
+                            d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-light" style="color: #04cc9c;" type="button">Texas</button>
+                </div>
+                <div class="col right">
+                    <svg style="color: #04cc9c;" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                        <path
+                            d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+                    </svg>
+                </div>
+            </div>
+            <div class="row">
+                <button class="btn btn-light left" style="color: #04cc9c;" type="button">Things to do</button>
+            </div>
+            <div class="row">
+                <button class="btn btn-light left" style="color: #04cc9c;" type="button">Tours</button>
+            </div>
+            <div class="row">
+                <button class="btn btn-light left" style="color: #04cc9c;" type="button">Uncategorized</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row mt-4">
+        <p>Follow the Adventures</p>
+        <div class="col-sm-3 col-lg-3">
+            <img src="images/41.jpg" class="img-fluid rounded mx-auto d-block" alt="Random Image"
+                style="height: 200px;">
+        </div>
+        <div class="col-sm-3 col-lg-3">
+            <img src="images/42.jpg" class="img-fluid rounded mx-auto d-block" alt="Random Image"
+                style="height: 200px;">
+        </div>
+        <div class="col-sm-3 col-lg-3">
+            <img src="images/43.jpg" class="img-fluid rounded mx-auto d-block" alt="Random Image"
+                style="height: 200px;">
+        </div>
+        <div class="col-sm-3 col-lg-3">
+            <img src="images/44.jpg" class="img-fluid rounded mx-auto d-block" alt="Random Image"
+                style="height: 200px;">
+        </div>
+    </div>
+    <div class="row">
+        <button class="btn btn-light right" type="button">FOLLOW US ON INSTAGRAM</button>
+    </div>
+
+</div>
+
+<!-- Footer -->
+<footer class="page-footer font-small footer_background_color pt-4">
+    <div class="container text-center text-md-left">
+        <div class="row text-center text-md-left mt-3 pb-3">
+            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                <div class="d-flex flex-column footer_background_color">
+                    <h6 class="mb-4 font-weight-bold">Find a Place to Stay</h6>
+                    <button class="btn p-2" type="button">All RBO Homes</button>
+                    <button class="btn p-2" type="button">Vacation Rentals</button>
+                    <button class="btn p-2" type="button">Cabins</button>
+                    <button class="btn p-2" type="button">Condos</button>
+                    <button class="btn p-2" type="button">Cottages</button>
+                    <button class="btn p-2" type="button">Ski Chalets</button>
+                </div>
+            </div>
+
+            <hr class="w-100 clearfix d-md-none">
+
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                <div class="d-flex flex-column footer_background_color">
+                    <button class="btn mt-5" type="button">Timeshares</button>
+                    <button class="btn p-2" type="button">RV Rentals</button>
+                    <button class="btn p-2" type="button">Boat Rentals</button>
+                    <button class="btn p-2" type="button">Villas</button>
+                    <button class="btn p-2" type="button">Hotels</button>
+                    <button class="btn p-2" type="button">Resorts</button>
+                </div>
+            </div>
+
+            <hr class="w-100 clearfix d-md-none">
+
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                <div class="d-flex flex-column footer_background_color">
+                    <h6 class="mb-4 font-weight-bold">About Us</h6>
+                    <button class="btn p-2" type="button">About Rent By Owner</button>
+                    <button class="btn p-2" type="button">Our Travel Journal</button>
+
+
+                    <h6 class="mb-4 font-weight-bold mt-5">Support</h6>
+                    <button class="btn" type="button">FAQs</button>
+                    <button class="btn p-2" type="button">List Your Property</button>
+                </div>
+            </div>
+
+            <hr class="w-100 clearfix d-md-none">
+
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                <div class="d-flex flex-column footer_background_color">
+                    <h6 class="text-uppercase mb-4 font-weight-bold">Explore</h6>
+                    <button class="btn p-2" type="button">My Profile</button>
+                    <button class="btn p-2" type="button">My Site</button>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-sm-3 col-lg-2">
+                <div class="d-lg-flex">
+
+                    <!-- Facebook -->
+                    <svg class="mx-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-facebook" viewBox="0 0 16 16">
+                        <path
+                            d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+                    </svg>
+
+                    <!--Instagram-->
+                    <svg class="mx-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-instagram" viewBox="0 0 16 16">
+                        <path
+                            d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
+                    </svg>
+
+                    <!-- Twitter -->
+                    <svg class="mx-2" class="mr-4" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+                        <path
+                            d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />
+                    </svg>
+                </div>
+            </div>
+            <div class="col-sm-3 col-lg-5">
+                <p>Privacy Policy Site Terms</p>
+            </div>
+            <div class="col-sm-3 col-lg-5">
+                <p class="text-lg-end">© 2021 Rent By Owner: All Rights Reserved</p>
+            </div>
+        </div>
+        <div class="col-md-5 col-lg-4 ml-lg-0">
+
+        </div>
+
+    </div>
+
+</footer>
+
+<!--Script-->
+<script src="script.js"></script>
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>
