@@ -1,4 +1,5 @@
 # JavaScript-Assignment
+Live Server: https://naym00.github.io/JavaScript-Assignment/
 
 Mainly This project has 5 sections
 ## Search Location:
